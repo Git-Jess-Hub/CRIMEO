@@ -25,7 +25,7 @@ Software installation<br />
 we have got our data videos from iStock, an online royalty-free, international micro-stock photography provider based in Calgary, Alberta, Canada. This firm offers millions of videos related to Crime-Domain. https://www.istockphoto.com/search/2/film?excludenudity=false&phrase=woman%20knife%20attack 
 
 # Approach
-Step 1: Download the zip file code, and extract it <br />
+Step 1: Download the Video Streaming.zip file code, and extract it to Video Streaming <br />
 Step 2: Go to “Kafka” folder, open three different “cmd” and run the following commands:<br />
 &nbsp;  &nbsp; 1.	##Run zookeeper server## (bin\windows\zookeeper-server-start.bat config\zookeeper.properties)<br />
 &nbsp;  &nbsp; 2.	##Run server## (bin\windows\kafka-server-start.bat config\server.properties)<br />
