@@ -24,7 +24,7 @@ Software installation<br />
 Install yolov7.weights from this link: https://www.mediafire.com/file/ciborhbd48wq175/yolov7.weights/file and push it inside the folder Video Streaming after it is extracted.
    
 # Dataset
-we have got our data videos from iStock, an online royalty-free, international micro-stock photography provider based in Calgary, Alberta, Canada. This firm offers millions of videos related to Crime-Domain. https://www.istockphoto.com/search/2/film?excludenudity=false&phrase=woman%20knife%20attack 
+We have got our data videos from iStock, an online royalty-free, international micro-stock photography provider based in Calgary, Alberta, Canada. This firm offers millions of videos related to Crime-Domain. https://www.istockphoto.com/search/2/film?excludenudity=false&phrase=woman%20knife%20attack 
 
 # Approach
 Step 1: Download the zip file code, and extract it <br />
