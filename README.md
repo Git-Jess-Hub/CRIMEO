@@ -34,7 +34,7 @@ Step 2: Go to “Kafka” folder, open three different “cmd” and run the fol
 &nbsp;  &nbsp; 3.	##Create topic## (bin\windows\kafka-topics.bat --create --topic testOntology --bootstrap-server localhost:9092)<br />
 Step 3: <br />
 &nbsp;  &nbsp; 1.	Run neo4j and create project called “ontologytest” and click ‘start’ (here we work on default database “neo4j”)<br />
-&nbsp;  &nbsp; 2.	Create our ontology by run these cypher queries:<br />
+&nbsp;  &nbsp; 2.	Create our ontology by running  the cypher queries in the file Ontology Cypher Queries.txt inside the Ontology Cypher Queries folder after extracting it <br />
 Now, the nodes and relationship are created.<br />
 Step 4: Go to anaconda and run our environment:<br />
 &nbsp;  &nbsp; 1.	Open the consumer file consumer.ipynb and run it <br />
