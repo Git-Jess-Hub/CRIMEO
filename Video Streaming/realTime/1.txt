@@ -1,0 +1,1 @@
+input folder, to pull a video inside it after running the consumer and the producer file, When the producer finishes processing the video it will push it to the output file which means it is finished from it.
