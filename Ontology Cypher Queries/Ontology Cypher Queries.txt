@@ -1,0 +1,511 @@
+CREATE (v:Video {name: 'Video’ })   
+CREATE (e:Event {name: 'Criminal Event'})   
+CREATE (a:Action {name: 'Criminal Actions’})   
+CREATE (o:Object {name: Crime Objects’})   
+CREATE (s:Scene {name: 'Crime Scene’})   
+
+MATCH
+  (e:Event),
+  (v: Video)
+WHERE e.name = 'Criminal Event' AND a.name = 'Video’
+CREATE (e)-[r: obtained_from]->(v)
+
+MATCH
+  (e:Event),
+  (a: Action)
+WHERE e.name = 'Criminal Event' AND a.name = 'Criminal Actions'
+CREATE (e)-[r:has_actions]->(a)
+
+MATCH
+  (e:Event),
+  (o: Object)
+WHERE e.name = 'Criminal Event' AND o.name = 'Crime Objects'
+CREATE (e)-[r:has_objects]->(o)
+
+MATCH
+  (e:Event),
+  (s: Scene)
+WHERE e.name = 'Criminal Event' AND s.name = 'Crime Scene'
+CREATE (e)-[r:has_scene]->(s)
+
+MATCH
+  (a:Action),
+  (b: Object )
+WHERE a.name = 'Criminal Actions' AND b.name = 'Human'
+CREATE (a)-[r:made_by]->(b)
+
+
+
+CREATE (a1:Action {name: ' Human_And_Human_Actions' }) 
+CREATE (a2:Action {name: ' Human_And_Object_Actions'})   
+CREATE (a3:Action {name: ' Human_And_Environement_Actions'})
+CREATE (a4:Action {name: ' Traffic_And_Object_Actions'})   
+CREATE (a5:Action {name: ' Traffic_And_Environement_Actions'})   
+
+   
+  MATCH
+  (a:Action),
+  (b: Object)
+WHERE a.name = ' Human_And_Human_Actions' AND b.name = 'Human'
+CREATE (a)-[r:made_on]->(b)
+
+MATCH
+  (a:Action),
+  (b: Object)
+WHERE a.name = ' Human_And_ Object_Actions' AND b.name = 'Crime Objects'
+CREATE (a)-[r:made_on]->(b)
+
+MATCH
+  (a:Action),
+  (b: Object)
+WHERE a.name = 'Traffic_And_Object_Actions' AND b.name = 'Crime Objects'
+CREATE (a)-[r:made_on]->(b)
+
+MATCH
+  (a:Action),
+  (b: Object)
+WHERE a.name = 'Traffic_And_Environement_Actions'AND b.name = 'Crime Objects'
+CREATE (a)-[r:made_on]->(b)
+
+
+OPTIONAL MATCH
+  (a1:Action),
+  (a2: Action)
+WHERE a1.name = 'Criminal Actions' AND a2.name = 'Human_And_Human_Actions'
+CREATE (a2)-[r:is_a]->(a1)
+
+OPTIONAL MATCH
+  (a1:Action),
+  (a2: Action)
+WHERE a1.name = 'Criminal Actions' AND a2.name = 'Human_And_Object_Actions'
+CREATE (a2)-[r:is_a]->(a1)
+OPTIONAL MATCH
+  (a1:Action),
+  (a2: Action)
+WHERE a1.name = 'Criminal Actions' AND a2.name = 'Human_And_Environement_Actions'
+CREATE (a2)-[r:is_a]->(a1)
+
+
+
+CREATE (:Action {name: 'Chasing' }) 
+CREATE (:Action {name: 'Hitting' }) 
+CREATE (:Action {name: 'killing' }) 
+CREATE (:Action {name: 'Split With' }) 
+CREATE (:Action {name: 'Attacking' }) 
+CREATE (:Action {name: 'Harassing' }) 
+CREATE (:Action {name: 'Punching' }) 
+CREATE (:Action {name: 'Met with' }) 
+CREATE (:Action {name: 'Fighting' }) 
+CREATE (:Action {name: 'Pushing' })  
+CREATE (:Action {name: 'Shooting' }) 
+CREATE (:Action {name: 'kicking' }) 
+CREATE (:Action {name: 'kidnapping' }) 
+
+MATCH (a:Action),(n:Action) WHERE a.name='Chasing' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Hitting' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='killing' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Split With' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Attacking' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Harassing' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Punching' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Met with' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Fighting' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Pushing' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Shooting' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='kicking' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='kidnapping' and n.name='Human_And_Human_Actions' CREATE (a)-[r:is_a]->(n)
+
+
+
+CREATE (:Action {name: 'Kicking Thing' }) 
+CREATE (:Action {name: 'Throwing' }) 
+CREATE (:Action {name: 'Breaking' }) 
+CREATE (:Action {name: 'Wearing' }) 
+CREATE (:Action {name: 'Stealing' }) 
+CREATE (:Action {name: 'Holding' }) 
+CREATE (:Action {name: 'Giving' }) 
+CREATE (:Action {name: 'Taking' }) 
+CREATE (:Action {name: 'Riding' }) 
+
+MATCH (a:Action),(n:Action) WHERE a.name='Kicking Thing' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Throwing' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Breaking' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Wearing' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Stealing' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Holding' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Giving' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Taking' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Riding' and n.name=' Human_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+
+
+CREATE (:Action {name: 'Left Area' })
+CREATE (:Action {name: 'Appeared' }) 
+CREATE (:Action {name: 'Entered Area' }) 
+CREATE (:Action {name: 'Moving' }) 
+CREATE (:Action {name: 'Loitering' }) 
+CREATE (:Action {name: 'Running' }) 
+CREATE (:Action {name: 'Stopping' }) 
+CREATE (:Action {name: 'Walking' }) 
+CREATE (:Action {name: 'Waiting' }) 
+
+
+ 
+
+MATCH (a:Action),(n:Action) WHERE a.name='Left Area' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Appeared' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Entered Area' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Moving' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Loitering' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Running' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Stopping' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Walking' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Waiting' and n.name=' Human_And_Environement_Actions' CREATE (a)-[r:is_a]->(n)
+
+CREATE (:Action {name: 'Crashed Object' }) 
+CREATE (:Action {name: 'Parked' }) 
+
+MATCH (a:Action),(n:Action) WHERE a.name='Crashed Object' and n.name=' Traffic_And_Object_Actions' CREATE (a)-[r:is_a]->(n)
+MATCH (a:Action),(n:Action) WHERE a.name='Parked' and n.name=' Traffic _And_ Environement _Actions' CREATE (a)-[r:is_a]->(n)
+
+CREATE (:Scene {name: 'Private Area' }) 
+CREATE (:Scene  {name: 'Social Area' }) 
+CREATE (:Scene  {name: 'Community and Government' }) 
+CREATE (:Scene  {name: 'Business Area' }) 
+CREATE (:Scene  {name: 'Health Care Center' }) 
+CREATE (:Scene  {name: 'Public Area' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name='Private Area' and b.name='Crime Scene' CREATE (a)-[r:is_a]->(b)
+
+CREATE (:Scene {name: 'Residence' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name='Private Area' and b.name='Residence' CREATE (b)-[r:is_a]->(a)
+
+CREATE (:Scene {name: 'Park' }) 
+CREATE (:Scene {name: 'Museum' }) 
+CREATE (:Scene {name: 'Stadium' }) 
+CREATE (:Scene {name: 'Restaurant' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name='Social Area' and b.name='Park' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Social Area' and b.name='Museum' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Social Area' and b.name='Stadium' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Social Area' and b.name='Restaurant' CREATE (b)-[r:is_a]->(a)
+
+
+CREATE (:Scene {name: 'Religious Area' }) 
+CREATE (:Scene {name: 'Prison' }) 
+CREATE (:Scene {name: 'Military' }) 
+CREATE (:Scene {name: 'Political Entity' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name=' Community and Government' ' and b.name='Religious Area'  CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name=' Community and Government' ' and b.name='Prison' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name=' Community and Government' ' and b.name='Military' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name=' Community and Government' ' and b.name='Political Entity' CREATE (b)-[r:is_a]->(a)
+
+
+CREATE (:Scene {name: 'Mall' }) 
+CREATE (:Scene {name: 'Petrol Station' }) 
+CREATE (:Scene {name: 'Local Store' }) 
+CREATE (:Scene {name: 'Lottery House' }) 
+CREATE (:Scene {name: 'Bank' }) 
+CREATE (:Scene {name: 'Drug Store' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Mall'  CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Petrol Station' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Local Store' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Lottery House' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Bank' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Business Area'  and b.name='Drug Store' CREATE (b)-[r:is_a]->(a)
+
+
+CREATE (:Scene {name: 'City' }) 
+CREATE (:Scene {name: 'Parking Area' }) 
+CREATE (:Scene {name: 'Street' }) 
+CREATE (:Scene {name: 'Pedestrian Zone' }) 
+CREATE (:Scene {name: 'Grass' }) 
+
+MATCH (a:Scene),(b:Scene) WHERE a.name='Public Area'  and b.name='City'  CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Public Area'  and b.name='Parking Area' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Public Area'  and b.name='Street' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Public Area'  and b.name='Pedestrian Zone' CREATE (b)-[r:is_a]->(a)
+MATCH (a:Scene),(b:Scene) WHERE a.name='Public Area'  and b.name='Grass' CREATE (b)-[r:is_a]->(a)
+
+
+CREATE (:Properties {name: 'Name' }) 
+CREATE (:Properties {name: 'Latitude' }) 
+CREATE (:Properties {name: 'Longitude' }) 
+
+MATCH (a:Scene),(b:Properties) WHERE a.name='Crime Scene'  and b.name='Name' CREATE (a)-[r:has_longitude]->(b)
+MATCH (a:Scene),(b:Properties) WHERE a.name='Crime Scene'  and b.name='Latitude' CREATE (a)-[r:has_longitude]->(b)
+MATCH (a:Scene),(b:Properties) WHERE a.name='Crime Scene'  and b.name='Longitude'  CREATE (a)-[r:has_longitude]->(b)
+
+
+CREATE (:Object {name: 'Contextual Object' }) 
+CREATE (:Object {name: 'Fixed Object' })
+CREATE (:Object {name: 'Portable Object' }) 
+CREATE (:Object {name: 'Symbolic Object' }) 
+ 
+MATCH (a:Object),(b:Object) WHERE a.name='Criminal Objects'  and b.name='Contextual Object'  CREATE (b)-[r:is_a]->(a)
+
+CREATE (:Object {name: 'Door' }) 
+CREATE (:Object {name: 'Wall' })
+CREATE (:Object {name: 'Staircase' }) 
+CREATE (:Object {name: 'Window' }) 
+CREATE (:Object {name: 'Building' }) 
+CREATE (:Object {name: 'ATM machine' }) 
+CREATE (:Object {name: 'Plates' }) 
+
+
+MATCH (a:Object),(b:Object) WHERE a.name='Door'  and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Wall' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Staircase' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Window' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Building' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='ATM machine' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Plates' and b.name='Fixed Object'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Money' }) 
+CREATE (:Object {name: 'Cellphone' })
+CREATE (:Object {name: 'Illegal Goods' }) 
+CREATE (:Object {name: 'Weapon' }) 
+CREATE (:Object {name: 'Bag/Suitcase' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Money'  and b.name='Portable Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Cellphone' and b.name='Portable Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Illegal Goods' and b.name='Portable Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Weapon' and b.name='Portable Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Bag/Suitcase' and b.name='Portable Object'  CREATE (a)-[r:is_a]->(b)
+
+CREATE (:Object {name: 'Drugs' }) 
+CREATE (:Object {name: 'Cigarette' })
+CREATE (:Object {name: 'Weed' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Drugs'  and b.name='Illegal Goods'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Cigarette' and b.name='Illegal Goods'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Weed' and b.name='Illegal Goods'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Weapon'  }) 
+
+CREATE (:Object {name: 'Firearm/Gun' }) 
+CREATE (:Object {name: 'Grenade' })
+CREATE (:Object {name: 'Cutting Weapon' }) 
+CREATE (:Object {name: 'Stick' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Firearm/Gun'  and b.name='Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Grenade' and b.name='Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Cutting Weapon' and b.name='Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Stick' and b.name='Weapon'  CREATE (a)-[r:is_a]->(b)
+
+
+
+CREATE (:Object {name: 'Long Gun' }) 
+CREATE (:Object {name: 'Short Gun' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Long Gun'  and b.name='Firearm/Gun'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Short Gun'  and b.name='Firearm/Gun'  CREATE (a)-[r:is_a]->(b)
+
+
+
+CREATE (:Object {name: 'Swords' }) 
+CREATE (:Object {name: 'Daggers' }) 
+CREATE (:Object {name: 'Knives' }) 
+CREATE (:Object {name: 'Bayonets' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Swords'  and b.name='Cutting Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Daggers' and b.name='Cutting Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Knives' and b.name='Cutting Weapon'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Bayonets' and b.name='Cutting Weapon'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Clothing' }) 
+CREATE (:Object {name: 'Criminal Clothes' }) 
+CREATE (:Object {name: 'Tattoo' }) 
+CREATE (:Object {name: 'Biometrics' }) 
+CREATE (:Object {name: 'Blood' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Clothing'  and b.name='Symbolic Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Criminal Clothes' and b.name='Symbolic Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Tattoo' and b.name='Symbolic Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Biometrics' and b.name='Symbolic Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Blood' and b.name='Symbolic Object'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Mask' }) 
+CREATE (:Object {name: 'Gloves' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Mask'  and b.name='Criminal Clothes'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Gloves' and b.name='Criminal Clothes'  CREATE (a)-[r:is_a]->(b)
+
+CREATE (:Object {name: 'Facial Print' }) 
+CREATE (:Object {name: 'Iris Print' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Facial Print'  and b.name='Biometrics'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Iris Print'  and b.name='Biometrics'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Mobile Object' }) 
+CREATE (:Object {name: 'Human' }) 
+CREATE (:Object {name: 'Ground Traffic' }) 
+CREATE (:Properties  {name: 'Name' }) 
+
+MATCH (a: Object ),(b: Properties ) WHERE a.name='Human'  and b.name='Name'  CREATE (a)-[r:has]->(b)
+
+
+MATCH (a:Object),(b:Object) WHERE a.name='Human'  and b.name='Mobile Object'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Ground Traffic' and b.name='Mobile Object'  CREATE (a)-[r:is_a]->(b)
+
+CREATE (:Object {name: 'Bicycle' }) 
+CREATE (:Object {name: 'Ground Vehicle' }) 
+CREATE (:Object {name: 'Motorcycle' }) 
+CREATE (:Object {name: 'Bus' }) 
+CREATE (:Object {name: 'Car' }) 
+CREATE (:Object {name: 'Truck' }) 
+
+CREATE (:Properties {name: 'Plate Number' }) 
+MATCH (a:Object),(b: Properties ) WHERE a.name='Ground Traffic' and b.name='Plate Number' CREATE (a)-[r: has_platenumber]->(b)
+
+
+MATCH (a:Object),(b:Object) WHERE a.name='Bicycle'  and b.name='Ground Traffic'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Ground Vehicle' and b.name='Ground Traffic'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Motorcycle' and b.name='Ground Traffic'  CREATE (a)-[r:is_a]->(b)
+
+
+MATCH (a:Object),(b:Object) WHERE a.name='Car'  and b.name='Ground Vehicle'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Bus' and b.name='Ground Vehicle'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Truck' and b.name='Ground Vehicle'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Object {name: 'Person' }) 
+CREATE (:Object {name: 'Face' }) 
+CREATE (:Object {name: 'Group of Person' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Person'  and b.name='Human'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Face' and b.name='Human'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Group of Person'  and b.name='Human'  CREATE (a)-[r:is_a]->(b)
+
+
+
+CREATE (:Object {name: 'Adult' }) 
+CREATE (:Object {name: 'Baby' }) 
+CREATE (:Object {name: 'Child' }) 
+CREATE (:Object {name: 'Man' }) 
+CREATE (:Object {name: 'Woman' }) 
+
+MATCH (a:Object),(b:Object) WHERE a.name='Adult'  and b.name='Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Baby' and b.name='Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Child' and b.name='Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Man' and b.name='Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Object),(b:Object) WHERE a.name='Woman' and b.name='Person'  CREATE (a)-[r:is_a]->(b)
+
+
+
+CREATE (:Properties {name: 'Facial Expressions' }) 
+MATCH (a: Object ),(b: Properties ) WHERE a.name='Human'  and b.name='Facial Expressions'  CREATE (a)-[r:has]->(b)
+
+CREATE (:Properties  {name: 'Sadness' }) 
+CREATE (:Properties  {name: 'Surprise' }) 
+CREATE (:Properties  {name: 'Anger' }) 
+CREATE (:Properties  {name: 'Disgust' }) 
+CREATE (:Properties  {name: 'Fear' }) 
+CREATE (:Properties  {name: 'Neutral' }) 
+
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Sadness'  and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Surprise' and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Anger' and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Disgust' and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Fear' and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+MATCH (a: Properties ),(b: Properties ) WHERE a.name='Neutral' and b.name='Facial Expressions'  CREATE (a)-[r:is_a]->(b)
+
+
+
+
+CREATE (:Indicator  {name: 'Indicator' }) 
+
+MATCH (a:Event ),(b:Indicator) WHERE a.name='Criminal Event'  and b.name='Indicator'  CREATE (a)-[r:is_associatedwith]->(b)
+
+CREATE (:Indicator  {name: 'Category' }) 
+CREATE (:Indicator  {name: 'Abnormal Behavior' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Category'  and b.name='Indicator'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Abnormal Behavior' and b.name='Indicator'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Terrorist Attack' }) 
+CREATE (:Indicator  {name: 'Offense Against Person' }) 
+CREATE (:Indicator  {name: 'Offense Against Property' }) 
+CREATE (:Indicator  {name: 'Violence  Offense' }) 
+CREATE (:Indicator  {name: 'Sexual Offense' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Terrorist Attack'  and b.name='Category'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Offense Against Person' and b.name='Category'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Offense Against Property' and b.name='Category'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Violence  Offense' and b.name='Category'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Sexual Offense' and b.name='Category'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Arson' }) 
+CREATE (:Indicator  {name: 'Kidnapping & Hostage-taking' }) 
+CREATE (:Indicator  {name: 'Firebombing' }) 
+CREATE (:Indicator  {name: 'Fights Clash' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Arson'  and b.name='Terrorist Attack'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Kidnapping & Hostage-taking' and b.name='Terrorist Attack'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Firebombing' and b.name='Terrorist Attack'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Fights Clash' and b.name='Terrorist Attack'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Murder' }) 
+CREATE (:Indicator  {name: 'Harassment' }) 
+CREATE (:Indicator  {name: 'Kidnapping' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Murder'  and b.name='Offense Against Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Harassment' and b.name='Offense Against Person'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Kidnapping' and b.name='Offense Against Person'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Handling stolen goods' }) 
+CREATE (:Indicator  {name: 'Robbery' }) 
+CREATE (:Indicator  {name: 'Vandalism' }) 
+CREATE (:Indicator  {name: 'Illegal Goods dealing' }) 
+CREATE (:Indicator  {name: 'Burglary' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Handling stolen goods'  and b.name='Offense Against Property'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Robbery' and b.name='Offense Against Property'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Vandalism' and b.name='Offense Against Property'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Illegal Goods dealing' and b.name='Offense Against Property'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Burglary' and b.name='Offense Against Property'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Assault' }) 
+CREATE (:Indicator  {name: 'Sexual Abuse' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Assault'  and b.name='Violence Offense'  CREATE (a)-[r:is_a]->(b)
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Sexual Abuse'  and b.name='Sexual Offense'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Crowding' }) 
+CREATE (:Indicator  {name: 'Explosion' }) 
+CREATE (:Indicator  {name: 'Illegal Throwing' }) 
+CREATE (:Indicator  {name: 'Walking masked' }) 
+CREATE (:Indicator  {name: 'Abandonment bags' }) 
+CREATE (:Indicator  {name: 'Evidence' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Crowding'  and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Explosion' and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Illegal Throwing' and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Walking masked' and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Abandonment bags' and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Evidence' and b.name='Abnormal Behavior'  CREATE (a)-[r:is_a]->(b)
+
+
+CREATE (:Indicator  {name: 'Crowding of Humans' }) 
+CREATE (:Indicator  {name: 'Crowding of Vehicles' }) 
+CREATE (:Indicator  {name: 'Riot' }) 
+CREATE (:Indicator  {name: 'Entertainment/festival' }) 
+
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Crowding of Humans'  and b.name='Crowding'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Crowding of Vehicles' and b.name='Crowding'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Riot' and b.name='Crowding'  CREATE (a)-[r:is_a]->(b)
+MATCH (a:Indicator ),(b:Indicator) WHERE a.name='Entertainment/festival' and b.name='Crowding'  CREATE (a)-[r:is_a]->(b)
