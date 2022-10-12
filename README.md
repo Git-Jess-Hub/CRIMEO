@@ -20,6 +20,8 @@ Software installation<br />
 &nbsp;  &nbsp;  •	Anaconda: https://anaconda.org/ <br />
 &nbsp;  &nbsp;  •	Kafka server 3.1.0: https://kafka.apache.org/downloads <br />
 &nbsp;  &nbsp;  •	Neo4j:  https://neo4j.com/download/ <br />
+
+Install yolov7.weights from this link: https://www.mediafire.com/file/ciborhbd48wq175/yolov7.weights/file  and push it inside the folder Video Streaming after it is extracted.
    
 # Dataset
 we have got our data videos from iStock, an online royalty-free, international micro-stock photography provider based in Calgary, Alberta, Canada. This firm offers millions of videos related to Crime-Domain. https://www.istockphoto.com/search/2/film?excludenudity=false&phrase=woman%20knife%20attack 
