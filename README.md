@@ -41,5 +41,5 @@ Step 4: Go to anaconda and run our environment:<br />
 &nbsp;  &nbsp; 2.	Open the producer file producer.ipynb and run it <br />
 Step 5: Go to neo4j again and we can apply our cypher queries, for example we can run this query:
 
-![query](https://user-images.githubusercontent.com/115569513/198698788-269c205c-7a51-4b06-9bae-087d16283d1d.png)
+![Screenshot (629)](https://user-images.githubusercontent.com/115569513/198700076-0a363e2e-00df-46d1-916d-f0c937ceb8bf.png)
 
