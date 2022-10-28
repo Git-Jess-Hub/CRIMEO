@@ -39,7 +39,7 @@ Now, the nodes and relationship are created.<br />
 Step 4: Go to anaconda and run our environment:<br />
 &nbsp;  &nbsp; 1.	Open the consumer file consumer.ipynb and run it <br />
 &nbsp;  &nbsp; 2.	Open the producer file producer.ipynb and run it <br />
-Step 5: Go to neo4j again and we can apply our cypher queries, for example we can run this query:
+Step 5: Go to neo4j again and we can apply our cypher query in the file Cypher query.txt inside the Ontology Cypher Queries folder, for example we can run this query:
 
 ![Screenshot (629)](https://user-images.githubusercontent.com/115569513/198700076-0a363e2e-00df-46d1-916d-f0c937ceb8bf.png)
 
