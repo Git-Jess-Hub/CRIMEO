@@ -1,0 +1,5 @@
+##Cypher query
+
+Match (e:Event)-[:HAS_OBJECTS]->(p1:Person),(e)-[:HAS_OBJECTS]->(p2:Person), 
+(e)-[:HAS_OBJECTS]->(k:Knives),(e)-[:HAS_ACTIONS]->(a: Killing) ,(e)-[:ASSOCIATED_WITH]->(i:Indicator)
+return i.name
