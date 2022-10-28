@@ -42,4 +42,4 @@ Step 4: Go to anaconda and run our environment:<br />
 Step 5: Go to neo4j again and we can apply our cypher queries, for example we can run this query:
 
 
-![query](https://user-images.githubusercontent.com/115569513/195178139-5c681a8a-ab10-4ecb-9038-42f45e62e94f.png)
+![Screenshot (629)](https://user-images.githubusercontent.com/115569513/198700506-d94fc69b-472a-4512-b7ef-1bcc3d095fe8.png)
